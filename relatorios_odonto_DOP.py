@@ -173,7 +173,7 @@ def main():
 
         # --- SALVANDO E FORMATANDO O EXCEL ---
         nome_arquivo = f"relatorio_indicadores_odonto.xlsx"
-        
+
         writer = pd.ExcelWriter(nome_arquivo, engine='xlsxwriter')
         df_para_salvar.to_excel(writer, index=False, sheet_name='Relatório')
 
@@ -181,13 +181,30 @@ def main():
         workbook  = writer.book
         worksheet = writer.sheets['Relatório']
 
-        # Cria um formato de porcentagem
+        # Cria o formato de porcentagem que será usado
         percent_format = workbook.add_format({'num_format': '0.00%'})
-        
-        # Descobre qual é a coluna "Conversão" (ex: F) e aplica o formato
-        col_idx = df_para_salvar.columns.get_loc('Conversão')
-        # A sintaxe 'A:A', 'B:B' usa letras. Para usar o índice numérico, fazemos assim:
-        worksheet.set_column(col_idx, col_idx, 12, percent_format) # 12 é a largura da coluna
+
+        # --- LÓGICA DE AUTO-AJUSTE ---
+        # Itera sobre cada coluna do DataFrame para calcular e aplicar a largura
+        for idx, col in enumerate(df_para_salvar.columns):
+            # Encontra o tamanho máximo entre o cabeçalho e os dados da coluna
+            # O .astype(str) é importante para garantir que números também sejam medidos como texto
+            max_len = max(
+                len(str(col)),  # Comprimento do nome do cabeçalho
+                df_para_salvar[col].astype(str).str.len().max()  # Comprimento do maior dado na coluna
+            ) + 2  # Adiciona um pequeno espaço extra para não ficar colado
+
+            # Define a formatação da célula (por padrão, nenhuma)
+            cell_format = None
+            
+            # Se a coluna atual for a 'Conversão', usamos o formato de porcentagem
+            if col == 'Conversão':
+                cell_format = percent_format
+                # Podemos garantir uma largura mínima para a coluna de porcentagem se quisermos
+                max_len = max(max_len, 12)
+
+            # Aplica a largura e a formatação (se houver) à coluna
+            worksheet.set_column(idx, idx, max_len, cell_format)
 
         # Salva o arquivo
         writer.close()
