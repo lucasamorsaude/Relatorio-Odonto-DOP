@@ -26,7 +26,7 @@ jobs:
         pip install requests pandas numpy xlsxwriter
 
     - name: 4. Executar Script
-      run: python seu_script.py # Mude para o nome do seu arquivo .py
+      run: python relatorios_odonto_DOP.py # Mude para o nome do seu arquivo .py
       env:
         # Pega os valores dos Secrets do repositório
         API_USER: ${{ secrets.API_USER }}
