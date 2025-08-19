@@ -196,7 +196,7 @@ def main():
         print("Dados gerados:")
         print(df_para_salvar.to_string())
 
-        # enviar_email(nome_arquivo)
+        enviar_email(nome_arquivo)
         
     except requests.exceptions.HTTPError as e:
         print(f"\n❌ Erro na requisição HTTP: {e.response.status_code}")
