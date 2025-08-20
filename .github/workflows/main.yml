@@ -3,7 +3,7 @@ name: Envio Diário do Relatório de Indicadores
 on:
   schedule:
     # Roda às 06:00, de Segunda a Sábado (UTC)
-    - cron: '0 6 * * 1-6'
+    - cron: '0 9 * * 1-6'
   # Permite rodar manualmente pela interface do GitHub
   workflow_dispatch:
 
