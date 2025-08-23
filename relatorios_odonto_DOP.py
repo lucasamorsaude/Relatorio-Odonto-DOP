@@ -172,7 +172,7 @@ def main():
         df_para_salvar = df_filtrado[colunas_finais]
 
         # --- SALVANDO E FORMATANDO O EXCEL ---
-        nome_arquivo = f"relatorio_indicadores_odonto.xlsx"
+        nome_arquivo = f"relatorio_odonto.xlsx"
 
         writer = pd.ExcelWriter(nome_arquivo, engine='xlsxwriter')
         df_para_salvar.to_excel(writer, index=False, sheet_name='Relatório')
