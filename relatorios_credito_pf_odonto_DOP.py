@@ -84,7 +84,7 @@ try:
     servico = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=servico, options=options)
     # Define uma espera máxima para os elementos aparecerem na página
-    wait = WebDriverWait(driver, 60) 
+    wait = WebDriverWait(driver, 30) 
     print("Bot iniciado em modo headless.")
 
     # --- Início da Automação ---
