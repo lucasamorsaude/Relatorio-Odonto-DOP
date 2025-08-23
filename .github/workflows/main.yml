@@ -23,7 +23,7 @@ jobs:
     - name: 3. Instalar Dependências
       run: |
         python -m pip install --upgrade pip
-        pip install requests pandas numpy xlsxwriter
+        pip install requests pandas numpy xlsxwriter selenium
 
     - name: 4. Executar Script
       run: python relatorios_odonto_DOP.py 
