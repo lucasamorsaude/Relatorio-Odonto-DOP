@@ -37,12 +37,12 @@ jobs:
 
     
     # --- NOVO PASSO ADICIONADO AQUI ---
-    - name: 5. Executar o SEGUNDO Relatório
-      run: python relatorios_credito_pf_odonto_DOP.py
-      env:
-        # Repita as 'secrets' para que o segundo script também tenha acesso
-        EMAIL_USER: ${{ secrets.EMAIL_USER }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        MAISTODOS_USER: ${{ secrets.MAISTODOS_USER }}
-        MAISTODOS_PASSWORD: ${{ secrets.MAISTODOS_PASSWORD }}
+    # - name: 5. Executar o SEGUNDO Relatório
+    #   run: python relatorios_credito_pf_odonto_DOP.py
+    #   env:
+    #     # Repita as 'secrets' para que o segundo script também tenha acesso
+    #     EMAIL_USER: ${{ secrets.EMAIL_USER }}
+    #     EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+    #     EMAIL_TO: ${{ secrets.EMAIL_TO }}
+    #     MAISTODOS_USER: ${{ secrets.MAISTODOS_USER }}
+    #     MAISTODOS_PASSWORD: ${{ secrets.MAISTODOS_PASSWORD }}
