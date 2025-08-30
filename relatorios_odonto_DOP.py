@@ -109,8 +109,8 @@ def main():
         config = json.load(f)
 
     # Obtenha os dados sensíveis das variáveis de ambiente
-    usuario_api = os.environ.get('API_USER')
-    senha_api = os.environ.get('API_PASSWORD')
+    usuario_api = os.environ.get('API_USER',"asslarissaoliveira")
+    senha_api = os.environ.get('API_PASSWORD',"Amor@2025")
     
     if not all([usuario_api, senha_api]):
         print("❌ Variáveis de ambiente API_USER ou API_PASSWORD não definidas.")
